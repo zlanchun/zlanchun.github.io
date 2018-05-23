@@ -2,7 +2,7 @@
 layout: post
 title: MWPhotoBrowser 更新其依赖的第三方库
 date: 2017-05-10 16:58:58 +0800
-tags: iOS
+tags: Cocoapods
 ---
 
 #### 前因
@@ -38,7 +38,7 @@ git clone 下来。
 
 修改的内容如下 （可飘过）
 
-```spec
+```ruby
 Pod::Spec.new do |s|
 
   s.name = 'MWPhotoBrowser'
@@ -97,7 +97,7 @@ end
 
 修改 `downloadImageWithURL` 方法，因为旧版和新版的方法不一样了，所以这里需要更改下。
 
-```objectivec
+```objc
 // Load from local file
 - (void)_performLoadUnderlyingImageAndNotifyWithWebURL:(NSURL *)url {
     @try {
@@ -140,7 +140,7 @@ end
 
 最后 Podfile 里的文件内容如下：
 
-```
+```shell
 pod "MWPhotoBrowser", :git => 'https://github.com/EvoIos/MWPhotoBrowser.git', :commit => 'de697e101195557ddca85661ebb266fd3f10776c'
 ```
 

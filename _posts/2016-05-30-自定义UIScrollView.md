@@ -44,14 +44,14 @@ y = 0.5 * x
 
 下面我们来看看效果：
 
-{% highlight objc %}
+```objc
 static CGFloat previousRubberBandDistance(CGFloat offset) {
     CGFloat result = fabs(offset) * 0.5;
     return offset < 0.0f ? -result : result;
 }
-{% endhighlight  %}
+```
 
-```javascript
+```js
 app.get('/defaultProduct', function(req, res) {
   res.set({
     'content-type': 'application/json',
@@ -69,14 +69,7 @@ app.get('/defaultProduct', function(req, res) {
 })
 ```
 
-```objectivec
-static CGFloat previousRubberBandDistance(CGFloat offset) {
-    CGFloat result = fabs(offset) * 0.5;
-    return offset < 0.0f ? -result : result;
-}
-```
-
-```obj-c
+```objc
 static CGFloat previousRubberBandDistance(CGFloat offset) {
     CGFloat result = fabs(offset) * 0.5;
     return offset < 0.0f ? -result : result;
@@ -90,7 +83,14 @@ static CGFloat previousRubberBandDistance(CGFloat offset) {
 }
 ```
 
-```objective-c
+```objc
+static CGFloat previousRubberBandDistance(CGFloat offset) {
+    CGFloat result = fabs(offset) * 0.5;
+    return offset < 0.0f ? -result : result;
+}
+```
+
+```objc
 static CGFloat previousRubberBandDistance(CGFloat offset) {
     CGFloat result = fabs(offset) * 0.5;
     return offset < 0.0f ? -result : result;

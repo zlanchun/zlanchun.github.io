@@ -1,8 +1,8 @@
 ---
-layout: single
+layout: post
 title: Kingfisher 源码分析（二）：reserved Swift keyword 以及 单例
 date: 2017-02-14 00:50:58 +0800
-tags:
+tags: 源码分析
 ---
 
 ### 引用文件：

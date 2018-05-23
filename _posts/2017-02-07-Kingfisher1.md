@@ -1,8 +1,8 @@
 ---
-layout: single
+layout: post
 title: Kingfisher 源码分析（一）：命名空间 kf 实现
 date: 2017-02-07 15:19:58 +0800
-tags:
+tags: 源码分析
 ---
 
 #### namespacing kf 实现
@@ -18,24 +18,24 @@ tags:
 ``` swift
 //Kingfisher.swift
 public final class Kingfisher<Base> {
-public let base: Base
-public init(_ base: Base) {
-self.base = base
-}
+	public let base: Base
+	public init(_ base: Base) {
+	self.base = base
+	}
 }
 
 /**
 A type that has Kingfisher extensions.
 */
 public protocol KingfisherCompatible {
-associatedtype CompatibleType
-var kf: CompatibleType { get }
+	associatedtype CompatibleType
+	var kf: CompatibleType { get }
 }
 
 public extension KingfisherCompatible {
-public var kf: Kingfisher<Self> {
-get { return Kingfisher(self) }
-}
+	public var kf: Kingfisher<Self> {
+		get { return Kingfisher(self) }
+	}
 }
 
 extension Image: KingfisherCompatible { }
@@ -51,9 +51,9 @@ placeholder: Image? = nil,
 options: KingfisherOptionsInfo? = nil,
 progressBlock: DownloadProgressBlock? = nil,
 completionHandler: CompletionHandler? = nil) -> RetrieveImageTask
-{
-...
-}
+	{
+	...
+	}
 }
 
 //UIButton+Kingfisher.swift
@@ -65,9 +65,9 @@ placeholder: UIImage? = nil,
 options: KingfisherOptionsInfo? = nil,
 progressBlock: DownloadProgressBlock? = nil,
 completionHandler: CompletionHandler? = nil) -> RetrieveImageTask
-{
-...
-}
+	{
+	...
+	}
 }
 ```
 
@@ -87,13 +87,13 @@ button.kf.setImage(...)
 
 ``` swift
 public protocol KingfisherCompatible {
-associatedtype CompatibleType
-var kf: CompatibleType { get }
-}
+	associatedtype CompatibleType
+		var kf: CompatibleType { get }
+	}
 public extension KingfisherCompatible {
-public var kf: Kingfisher<Self> {
-get { return Kingfisher(self) }
-}
+	public var kf: Kingfisher<Self> {
+		get { return Kingfisher(self) }
+	}
 }
 
 extension ImageView: KingfisherCompatible { }
@@ -104,7 +104,7 @@ extension Button: KingfisherCompatible { }
 
 在协议扩展中，协议自身实现了属性。这样就不必在每个遵守该协议的类里实现该属性了。参见苹果[文档](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID267)：
 
->Protocols can be extended to provide method and property implementations to conforming types. This allows you to define behavior on protocols themselves, rather than in each type’s individual conformance or in a global function.
+> Protocols can be extended to provide method and property implementations to conforming types. This allows you to define behavior on protocols themselves, rather than in each type’s individual conformance or in a global function.
 
 协议里的 kf 是一个 Kingfisher 类的实例，调用的方法是 Kingfisher 类的方法。根据类型的不同，调用不同类型里的方法。如：对应 UIImageView / UIButton 的 Kingfisher 里的setImage 方法。
 
@@ -124,11 +124,11 @@ extension Button: KingfisherCompatible { }
 
 ``` swift
 extension UIImageView: KingfisherCompatible {
-public var kf: Kingfisher<UIImageView> { return Kingfisher(self) }
+	public var kf: Kingfisher<UIImageView> { return Kingfisher(self) }
 }
 
 extension Kingfisher where Base: UIImageView  {
-public func setImage() { print("imageView setImage") }
+	public func setImage() { print("imageView setImage") }
 }
 ```
 
@@ -136,26 +136,26 @@ public func setImage() { print("imageView setImage") }
 
 ``` swift
 public final class Kingfisher<Base> {
-public let base: Base
-public init(_ base: Base){
-self.base = base
-}
+	public let base: Base
+	public init(_ base: Base){
+		self.base = base
+	}
 }
 public protocol KingfisherCompatible {
-associatedtype CompatibleType
-var kf: CompatibleType { get }
-}
+	associatedtype CompatibleType
+	var kf: CompatibleType { get }
+	}
 extension UIImageView: KingfisherCompatible {
-public var kf: Kingfisher<UIImageView> { return Kingfisher(self) }
+	public var kf: Kingfisher<UIImageView> { return Kingfisher(self) }
 }
 extension Kingfisher where Base: UIImageView  {
-public func setImage() { print("imageView setImage") }
+	public func setImage() { print("imageView setImage") }
 }
 extension UIButton: KingfisherCompatible {
-public var kf: Kingfisher<UIButton> { return Kingfisher(self) }
+	public var kf: Kingfisher<UIButton> { return Kingfisher(self) }
 }
 extension Kingfisher where Base: UIButton {
-public func setImage() { print("button setImage") }
+	public func setImage() { print("button setImage") }
 }
 
 let imageView = UIImageView()

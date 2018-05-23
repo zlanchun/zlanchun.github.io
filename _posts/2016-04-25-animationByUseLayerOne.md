@@ -1,10 +1,10 @@
 ---
-layout: single
+layout: post
 title: CoreAnimation动画（一）：遮罩动画/注水动画
 date: 2016-04-25 23:54:40 +0800
 tags: CoreAnimation
 ---
-##遮罩动画/注水动画
+## 遮罩动画/注水动画
 
 一般用CoreAnimation+mask 来实现其动画效果。
 mask指lyaer.mask属性，等同于UIView的clipsToBounds属性，将超出自身范围外的内容剪裁掉，不显示。
@@ -45,7 +45,7 @@ mask指lyaer.mask属性，等同于UIView的clipsToBounds属性，将超出自�
 
 keyPath=@"position.x"的实现方法：
 
-```objectivec
+```objc
     //position.x animation
     CALayer *pContainerLayer = [CALayer layer];
     pContainerLayer.frame = CGRectMake(200, 50, 100, 50);
@@ -75,7 +75,7 @@ keyPath=@"position.x"的实现方法：
 
 keyPath=@"bounds.size.width"的实现方法：宽度由 0->100
 
-```objectivec
+```objc
     //bounds.size.width animation
     CALayer *bContainerLayer = [CALayer layer];
     bContainerLayer.frame = CGRectMake(200, 110, 100, 50);
@@ -112,7 +112,7 @@ slider: 0 -> 1
 
 coverLayer width: 0 -> max(宽度的最大值)
 
-```objectivec
+```objc
 @interface ViewController ()
 @property (nonatomic,strong) CALayer *coverLayer;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
@@ -158,7 +158,7 @@ coverLayer width: 0 -> max(宽度的最大值)
 - CAShapeLayer利用属性path，用贝塞尔创建需要的图形。工具paintCode非常好用。
 - 设定背景图层的mask属性为上一步生成的shapelayer。这样就生成特定图形的图层了。
 
-``` objectivec
+```objc
     CALayer *canvasLayer = [CALayer layer];
     canvasLayer.frame = CGRectMake(200, 80, 52, 94);
     canvasLayer.backgroundColor = [[UIColor orangeColor] CGColor];
@@ -189,7 +189,7 @@ coverLayer width: 0 -> max(宽度的最大值)
 
 贝塞尔生成的不规则图形，frame为{1，1，52，94}
 
-```objectivec
+```objc
 - (UIBezierPath *)createBezierPath {
     // W:H = 70:120
     // oval frame {1,1,52,94}
@@ -229,7 +229,7 @@ bglayer是黑色边框图层,
 canvasLayer是背景图层,
 waveLayer是遮罩图层.
 
-```objectivec
+```objc
 #import "ViewController.h"
 
 @interface ViewController ()

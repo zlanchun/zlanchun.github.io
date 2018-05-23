@@ -1,8 +1,8 @@
 ---
-layout: single
+layout: post
 title: LCJSONFormatter：JSON 转模型 swift版
 date: 2016-06-12 19:59:35 +0800
-tags: [iOS, swift JSON]
+tags: JSONFormatter
 ---
 
 ## [LCJSONFormatter](https://github.com/EvoIos/LCJSONFormatter)
