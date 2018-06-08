@@ -2,7 +2,7 @@
 layout: post
 title: MWPhotoBrowser 更新其依赖的第三方库
 date: 2017-05-10 16:58:58 +0800
-tags: Cocoapods
+tags: CocoaPods
 ---
 
 #### 前因

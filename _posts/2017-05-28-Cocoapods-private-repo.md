@@ -2,7 +2,7 @@
 layout: post
 title: CocoaPods 集成私有库
 date: 2017-05-28 
-tags: Cocoapods
+tags: CocoaPods
 ---
 
 ### 前言
